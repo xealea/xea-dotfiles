@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+up() {
+  brightnessctl s +1%; \
+  dunstify "盛 Brigthness Up:" -h int:value:$(brightnessctl g | cut -f 1 -d '.') -t 1000 -r 1
+}
+
+down() {
+  brightnessctl s -1% ; \
+  dunstify "滛 Brigthness Down:" -h int:value:$(brightnessctl g | cut -f 1 -d '.') -t 1000 -r 1
+}
+
+if [[ "$1" == "--inc" ]];
+then
+  up 
+fi
+if [[ "$1" == "--dec" ]];
+then
+  down
+fi
